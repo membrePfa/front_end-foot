@@ -9,7 +9,6 @@
        <thead>
 <tr >
     <th class="text-center">Nom de Stade</th>
-    <th class="text-center">Joeur_id</th>
     <th class="text-center">Date de Reservation</th>
     <th class="text-center">Heure de Reservation</th>
     <th class="text-center">Prix</th>
@@ -42,6 +41,17 @@
             }
 
         }
+        tbody.addEventListener('click', function(e){
+            let del = e.target.closest('.del');
+            if(del){
+                req.open("DELETE","http://127.0.0.1:8000/api/reservations/delete/"+del.dataset.id , true);
+                req.setRequestHeader('Content-type','application/json; charset=utf-8');
+
+                req.send(null);
+                location.reload();
+            }
+        })
+
         
         </script>
         @endsection

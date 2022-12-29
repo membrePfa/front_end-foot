@@ -28,6 +28,10 @@ Route::get('reservations/add', function () {
     return view('createReservation');
 });
 
+Route::get('/', function () {
+    return view('auth');
+});
+
 
 
 
