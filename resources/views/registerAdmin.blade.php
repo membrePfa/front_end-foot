@@ -18,8 +18,7 @@
     <meta name="author" content="CodedThemes">
     <!-- Favicon icon -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-    <!-- Google font-->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+    <!-- Google font--><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
     <!-- Required Fremwork -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap/css/bootstrap.min.css">
     <!-- themify-icons line icon -->
@@ -49,63 +48,67 @@
     </div>
 </div>
     <!-- Pre-loader end -->
-
     <section class="login p-fixed d-flex text-center bg-primary common-img-bg">
         <!-- Container-fluid starts -->
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12">
                     <!-- Authentication card start -->
-                    <div class="login-card card-block auth-body mr-auto ml-auto">
+                    <div class="signup-card card-block auth-body mr-auto ml-auto">
                         <form class="md-float-material">
                             <div class="text-center">
-                             <!--   <img src="assets/images/auth/logo-dark.png" alt="logo.png"> -->
+                               <!-- <img src="assets/images/auth/logo-dark.png" alt="logo.png"> -->
                             </div>
                             <div class="auth-box">
                                 <div class="row m-b-20">
                                     <div class="col-md-12">
-                                        <h3 class="text-left txt-primary">S'authentifier</h3>
+                                        <h3 class="text-center txt-primary">S'inscrire.</h3>
                                     </div>
                                 </div>
                                 <hr/>
                                 <div class="input-group">
-                                    <input type="text" id='email' class="form-control" placeholder="Email">
+                                    <input type="text" id="name" class="form-control" placeholder="Choose Username">
                                     <span class="md-line"></span>
                                 </div>
                                 <div class="input-group">
-                                    <input type="password" id='password' class="form-control" placeholder="Password">
+                                    <input type="text" id = "email"class="form-control" placeholder="Your Email Address">
+                                    <span class="md-line"></span>
+                                </div>
+                                <div class="input-group">
+                                    <input type="password" id="password" class="form-control" placeholder="Choose Password">
+                                    <span class="md-line"></span>
+                                </div>
+                                <div class="input-group">
+                                    <input type="password" id="password" class="form-control" placeholder="Confirm Password">
                                     <span class="md-line"></span>
                                 </div>
                                 <div class="row m-t-25 text-left">
-                                    <div class="col-sm-7 col-xs-12">
+                                    <div class="col-md-12">
                                         <div class="checkbox-fade fade-in-primary">
                                             <label>
                                                 <input type="checkbox" value="">
                                                 <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
-                                                <span class="text-inverse">Rester connecter</span>
+                                                <span class="text-inverse">j'ai lu et j'ai accepté <a href="#"></a></span>
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="col-sm-5 col-xs-12 forgot-phone text-right">
-                                        <a href="auth-reset-password.html" class="text-right f-w-600 text-inverse">Renitialiser votre mot de passe?</a>
-                                    </div>
+ 
                                 </div>
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
-                                        <button type="button" id='cnx' class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">S'authentifier</button>
+                                        <button  type="button" id="cnx" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"><a  href="/sinscrire">S'insccrire.</a></button>
                                     </div>
                                 </div>
                                 <hr/>
                                 <div class="row">
                                     <div class="col-md-10">
-                                        <p class="text-inverse text-left m-b-0"><a href="/autantqueadmin" class="text-right f-w-600 text-inverse">S'inscrire autant qu'un Admin</a></p>
-                                        <p class="text-inverse text-left m-b-0"><a href="auth-reset-password.html" class="text-right f-w-600 text-inverse">S'inscrire autant qu'un Joueur</a></p>
+                                     <!--   <p class="text-inverse text-left m-b-0">Thank you and enjoy our website.</p>
+                                        <p class="text-inverse text-left"><b>Your Authentication Team</b></p>-->
                                     </div>
                                     <div class="col-md-2">
-                                       <!-- <img src="assets/images/auth/Logo-small-bottom.png" alt="small-logo.png"> -->
+                                     <!--   <img src="assets/images/auth/Logo-small-bottom.png" alt="small-logo.png">-->
                                     </div>
                                 </div>
-
                             </div>
                         </form>
                         <!-- end of form -->
@@ -118,6 +121,7 @@
         </div>
         <!-- end of container-fluid -->
     </section>
+	
     <!-- Warning Section Starts -->
     <!-- Older IE warning message -->
     <!--[if lt IE 9]>
@@ -173,13 +177,16 @@
     <script type="text/javascript" src="assets/js/modernizr/modernizr.js"></script>
     <script type="text/javascript" src="assets/js/modernizr/css-scrollbars.js"></script>
     <script type="text/javascript" src="assets/js/common-pages.js"></script>
+    
     <script>
-        let email = document.querySelector('#email');
+        let name = document.querySelector('#name');
+         let email = document.querySelector('#email');
         let pass = document.querySelector('#password');
         let cnx = document.querySelector('#cnx');
 
          cnx.addEventListener("click", function(){
             var data = {
+                "name": name.value,
                 "email":email.value,
                 "password":pass.value
             }
@@ -187,21 +194,21 @@
            
             let dt;
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', "http://127.0.0.1:81/api/login", true);
+            xhr.open('POST', "http://127.0.0.1:81/api/register", true);
             xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
             xhr.onload = function () {
                // console.log(this.responseText);
                 if(xhr.status === 200){
                     dt = JSON.parse(xhr.response)
-                    //alert(dt.user.name +' => '+dt.user.role)
+                    alert(dt.user.name +' => '+dt.user.role)
                     if(dt.user.role == 'admin')
                         location.href="http://127.0.0.1:83/stade"
-                    else if(dt.user.role == 'joueur')
-                        location.href="http://127.0.0.1:83/reservations"
+                    //else if(dt.user.role == 'joueur')
+                       // location.href="http://127.0.0.1:83/reservations"
                 }
                    // location.href="http://127.0.0.1:83/stade"
                 else if(xhr.status === 401)
-                    alert('credential incorrect')
+                   alert('credential incorrect')
             };
             
              xhr.send(JSON.stringify(data));
@@ -209,6 +216,5 @@
          })
     </script>
 </body>
-
 
 </html>

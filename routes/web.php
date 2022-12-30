@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('/joueur', function () {
+    return view('joeur');
+});
 
 Route::get('/stade', function () {
     return view('stade');
@@ -30,6 +32,12 @@ Route::get('reservations/add', function () {
 
 Route::get('/', function () {
     return view('auth');
+});
+Route::get('/autantqueadmin', function () {
+    return view('registerAdmin');
+});
+Route::get('/sinscrire', function () {
+    return view('satde');
 });
 
 

@@ -176,7 +176,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="auth-normal-sign-in.html">
+                                        <a href="/">
                                             <i class="ti-layout-sidebar-left"></i> Logout
                                         </a>
                                     </li>
@@ -237,7 +237,7 @@
                         
                                 </li>
                                 <li class="pcoded-hasmenu">
-                                    <a href="/reservation">
+                                    <a href="/reservations">
                                         <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
                                         <span data-i18n="nav.basic-components.main">Gestion Des Reservations</span>
                                        
