@@ -79,7 +79,7 @@
                                     <span class="md-line"></span>
                                 </div>
                                 <div class="input-group">
-                                    <input type="password" id="password" class="form-control" placeholder="Confirm Password">
+                                    <input type="password" id="password2" class="form-control" placeholder="Confirm Password">
                                     <span class="md-line"></span>
                                 </div>
                                 <div class="row m-t-25 text-left">
@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
-                                        <button  type="button" id="cnx" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"><a  href="/sinscrire">S'insccrire.</a></button>
+                                        <button  type="button" id="ajouter" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"><a  href="/sinscrire">S'insccrire.</a></button>
                                     </div>
                                 </div>
                                 <hr/>
@@ -179,42 +179,29 @@
     <script type="text/javascript" src="assets/js/common-pages.js"></script>
     
     <script>
-        let name = document.querySelector('#name');
-         let email = document.querySelector('#email');
-        let pass = document.querySelector('#password');
-        let cnx = document.querySelector('#cnx');
-
-         cnx.addEventListener("click", function(){
-            var data = {
-                "name": name.value,
-                "email":email.value,
-                "password":pass.value
-            }
-
-           
-            let dt;
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', "http://127.0.0.1:81/api/register", true);
-            xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
-            xhr.onload = function () {
-               // console.log(this.responseText);
-                if(xhr.status === 200){
-                    dt = JSON.parse(xhr.response)
-                    alert(dt.user.name +' => '+dt.user.role)
-                    if(dt.user.role == 'admin')
-                        location.href="http://127.0.0.1:83/stade"
-                    //else if(dt.user.role == 'joueur')
-                       // location.href="http://127.0.0.1:83/reservations"
-                }
-                   // location.href="http://127.0.0.1:83/stade"
-                else if(xhr.status === 401)
-                   alert('credential incorrect')
-            };
-            
-             xhr.send(JSON.stringify(data));
-            // location.href="http://127.0.0.1:83/joueurs";
-         })
-    </script>
+        let ajouter = document.querySelector("#ajouter");
+          let name = document.querySelector("#name");
+          let email = document.querySelector("#email");
+          let pass = document.querySelector("#password");
+  
+      ajouter.addEventListener("click", function(){
+          var data = {
+              "name":name.value,
+              "email":email.value,
+              "password":pass.value
+              
+ 
+          }
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', "http://127.0.0.1:81/api/register", true);
+          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+          xhr.onload = function () {
+              console.log(this.responseText);
+          };
+          xhr.send(JSON.stringify(data));
+          location.href="http://127.0.0.1:83/";
+      })
+   </script>
 </body>
 
 </html>

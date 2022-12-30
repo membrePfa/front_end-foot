@@ -99,7 +99,7 @@
                                 <div class="row">
                                     <div class="col-md-10">
                                         <p class="text-inverse text-left m-b-0"><a href="/autantqueadmin" class="text-right f-w-600 text-inverse">S'inscrire autant qu'un Admin</a></p>
-                                        <p class="text-inverse text-left m-b-0"><a href="auth-reset-password.html" class="text-right f-w-600 text-inverse">S'inscrire autant qu'un Joueur</a></p>
+                                        <p class="text-inverse text-left m-b-0"><a href="/autantquejoeur" class="text-right f-w-600 text-inverse">S'inscrire autant qu'un Joueur</a></p>
                                     </div>
                                     <div class="col-md-2">
                                        <!-- <img src="assets/images/auth/Logo-small-bottom.png" alt="small-logo.png"> -->

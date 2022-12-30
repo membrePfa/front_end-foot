@@ -36,8 +36,11 @@ Route::get('/', function () {
 Route::get('/autantqueadmin', function () {
     return view('registerAdmin');
 });
+Route::get('/autantquejoeur', function () {
+    return view('registerJoueur');
+});
 Route::get('/sinscrire', function () {
-    return view('satde');
+    return view('auth');
 });
 
 
