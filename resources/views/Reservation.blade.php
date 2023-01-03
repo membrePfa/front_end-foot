@@ -27,7 +27,7 @@
             let tbody = document.querySelector("#tbody");
             let stade;
             const req = new XMLHttpRequest();
-        req.open("GET","http://127.0.0.1:8000/api/reservations", true);
+        req.open("GET","http://127.0.0.1:82/api/reservations", true);
         req.send();
         req.onload = ()=>{
             if(req.status === 200){
@@ -36,7 +36,7 @@
                 //console.log(listJo);
                 listJo.forEach(ply => {
                     
-                    tbody.innerHTML += "<tr><td> "+ply.nomStade+"  </td><td> "+ply.dateReservation+"  </td><td> "+ply.heureReservation+"  </td><td> "+ply.prix+"</td><td ><a href='/reservation/"+ply.id+"/edit' class='btn btn-info'  style='border: none'  data-bs-toggle='modal' data-bs-target='#depedit'>Modifier</a><a class='del btn btn-danger' data-id='"+ply.id+"' style='cursor: pointer'>Supprimer</a><a class=' btn btn-primary' data-id='"+ply.id+"' style='cursor: pointer'>Paiement</a></td></tr>";
+                    tbody.innerHTML += "<tr><td> "+ply.nomStade+"  </td><td> "+ply.dateReservation+"  </td><td> "+ply.heureReservation+"  </td><td> "+ply.prix+"</td><td ><a href='/reservation/"+ply.id+"/edit' class='btn btn-info'  style='border: none'  data-bs-toggle='modal' data-bs-target='#depedit'>Modifier</a><a class='del btn btn-danger' data-id='"+ply.id+"' style='cursor: pointer'>Supprimer</a><a  href='/paiements/add" class=' btn btn-primary' data-id='"+ply.id+"' style='cursor: pointer'>Paiement</a></td></tr>";
                 });
             }
 
@@ -44,7 +44,7 @@
         tbody.addEventListener('click', function(e){
             let del = e.target.closest('.del');
             if(del){
-                req.open("DELETE","http://127.0.0.1:8000/api/reservations/delete/"+del.dataset.id , true);
+                req.open("DELETE","http://127.0.0.1:82/api/reservations/delete/"+del.dataset.id , true);
                 req.setRequestHeader('Content-type','application/json; charset=utf-8');
 
                 req.send(null);

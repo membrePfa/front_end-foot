@@ -3,15 +3,14 @@
 
    <div class="container"> 
     <div class="row ">
-        <a class="btn btn-outline-success col-12 mr-10 ml-10" href="stade/add">Ajouter Stade </a>
     </div>
     <table class="table table-striped text-center">
        <thead>
 <tr >
-    <th class="text-center">nom</th>
-    <th class="text-center">capacite</th>
-    <th class="text-center">disponibilite</th>
-
+    <th class="text-center">Nom de joueur</th>
+    <th class="text-center">Numero de Carte</th>
+    <th class="text-center">Date Expiration de Carte</th>
+    <th class="text-center">Code Cvv</th>
 </tr>
        </thead>
        <tbody id="tbody"></tbody>
@@ -25,32 +24,32 @@
         <script>
           
             let tbody = document.querySelector("#tbody");
+            let stade;
             const req = new XMLHttpRequest();
-        req.open("GET","http://127.0.0.1:82/api/stades", true);
+        req.open("GET","http://127.0.0.1:84/api/paiements", true);
         req.send();
         req.onload = ()=>{
             if(req.status === 200){
                 listJo = JSON.parse(req.response);
+                console.log(req.response)
                 //console.log(listJo);
                 listJo.forEach(ply => {
-                    tbody.innerHTML += "<tr><td> "+ply.nom+"  </td><td> "+ply.capacite+"  </td><td> "+ply.disponibilite+"  </td><td ><a href='/stade/"+ply.id+"/edit' class='btn btn-info'  style='border: none'>Modifier</a><a class='del btn btn-danger' data-id='"+ply.id+"' style='cursor: pointer'>Supprimer</a><a href='/reservations/add' class='btn btn-primary' style='cursor: pointer' >Reserver</a></td></tr>";
+                    
+                    tbody.innerHTML += "<tr><td> "+ply.nomJoueur+"  </td><td> "+ply.numero_de_carte+"  </td><td> "+ply.date_expirationcarte+"  </td><td> "+ply.code_cvv+"</td><td ><a href='/paiement/"+ply.id+"/edit' class='btn btn-info'  style='border: none'  data-bs-toggle='modal' data-bs-target='#depedit'>Modifier</a><a class='del btn btn-danger' data-id='"+ply.id+"' style='cursor: pointer'>Supprimer</a></td></tr>";
                 });
             }
 
         }
-      
-
         tbody.addEventListener('click', function(e){
             let del = e.target.closest('.del');
             if(del){
-                req.open("DELETE","http://127.0.0.1:8000/api/stades/delete/"+del.dataset.id , true);
+                req.open("DELETE","http://127.0.0.1:84/api/paiements/delete/"+del.dataset.id , true);
                 req.setRequestHeader('Content-type','application/json; charset=utf-8');
 
                 req.send(null);
                 location.reload();
             }
         })
-
 
         
         </script>

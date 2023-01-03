@@ -43,7 +43,12 @@ Route::get('/sinscrire', function () {
     return view('auth');
 });
 
-
+Route::get('/paiements', function () {
+    return view('paiement');
+});
+Route::get('paiements/add', function () {
+    return view('createPaiment');
+});
 
 
 

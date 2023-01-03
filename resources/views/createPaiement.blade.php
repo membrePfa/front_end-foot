@@ -3,22 +3,22 @@
 
 <fieldset>
     <div class="mb-3">
-        <label for="stade_id">stade :</label><br>
-        <select id="stade_id">
+        <label for="joueur_id">Joueur :</label><br>
+        <select id="joueur_id">
             <option value=""></option>
         </select>
         </div>
     <div class="mb-3">
-     <label for="dateReservation">Date de Reservation :</label><br>
-     <input class="form-control" type="date" id="dateReservation">
+     <label for="numero_de_carte">Numero de Carte :</label><br>
+     <input class="form-control" type="text" id="numero_de_carte">
      </div>
      <div class="mb-3">
-     <label for="heureReservation">Heure de Reservation :</label><br>
-     <input class="form-control" type="time" id="heureReservation">
+     <label for="date_expirationcarte">Date Expiration de Carte :</label><br>
+     <input class="form-control" type="date" id="date_expirationcarte">
      </div>
      <div class="mb-3">
-        <label for="prix">Prix :</label><br>
-        <input class="form-control" type="text" id="prix">
+        <label for="code_cvv">Code Cvv :</label><br>
+        <input class="form-control" type="text" id="code_cvv">
         </div>
      <div class="mb-3"><input class="btn btn-primary" type="button" id="ajouter" value="Ajouter"></div>
      
@@ -28,12 +28,12 @@
      @section("script")
     <script>
             let ajouter = document.querySelector("#ajouter");
-            let stade_id = document.querySelector("#stade_id");
-            let dateReservation = document.querySelector("#dateReservation");
-            let heureReservation = document.querySelector("#heureReservation");
-            let prix = document.querySelector("#prix");
+            let joueur_id = document.querySelector("#joueur_id");
+            let numero_de_carte = document.querySelector("#numero_de_carte");
+            let date_expirationcarte = document.querySelector("#date_expirationcarte");
+            let code_cvv = document.querySelector("#code_cvv");
             const req = new XMLHttpRequest();
-        req.open("GET","http://127.0.0.1:82/api/stades", true);
+        req.open("GET","http://127.0.0.1:84/api/joueurs", true);
         req.send();
         req.onload = ()=>{
             if(req.status === 200){
@@ -48,20 +48,20 @@
 
         ajouter.addEventListener("click", function(){
             var data = {
-                "stade_id":stade_id.value,
-                "dateReservation":dateReservation.value,
-                "heureReservation":heureReservation.value,
-                "prix":prix.value
+                "joueur_id":joueur_id.value,
+                "numero_de_carte":numero_de_carte.value,
+                "date_expirationcarte":date_expirationcarte.value,
+                "code_cvv":code_cvv.value
    
             }
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', "http://127.0.0.1:8000/api/reservations/save", true);
+            xhr.open('POST', "http://127.0.0.1:84/api/paiements/save", true);
             xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
             xhr.onload = function () {
                 console.log(this.responseText);
             };
             xhr.send(JSON.stringify(data));
-            location.href="http://127.0.0.1:83/reservations";
+            location.href="http://127.0.0.1:83/paiements";
         })
     </script>
      @endsection

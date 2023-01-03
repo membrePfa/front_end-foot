@@ -195,9 +195,9 @@
                     dt = JSON.parse(xhr.response)
                     //alert(dt.user.name +' => '+dt.user.role)
                     if(dt.user.role == 'admin')
-                        location.href="http://127.0.0.1:83/stade"
-                    else if(dt.user.role == 'joueur')
                         location.href="http://127.0.0.1:83/reservations"
+                    else if(dt.user.role == 'joueur')
+                        location.href="http://127.0.0.1:83/stade"
                 }
                    // location.href="http://127.0.0.1:83/stade"
                 else if(xhr.status === 401)

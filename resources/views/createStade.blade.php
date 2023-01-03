@@ -36,7 +36,7 @@
    
             }
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', "http://127.0.0.1:8000/api/stades/save", true);
+            xhr.open('POST', "http://127.0.0.1:82/api/stades/save", true);
             xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
             xhr.onload = function () {
                 console.log(this.responseText);
